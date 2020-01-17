@@ -1,2 +1,2 @@
-# skyscript-2
-The second version of skyscript! still in development but if you want to run it you must use python3 (Talking to the people who are delaying the progress of python)
+# simplo
+A new programming language! still in development but it will be great when its done! It will support all skyscript commands as the project was originally skyscript 2.
