@@ -1,4 +1,3 @@
-
 #!/usr/bin/env python
 # work on ling command next
 # simplo transpiler version 0.1 BETA by Rohan Samra-O'Neill
@@ -26,7 +25,7 @@ for arg in sys.argv:
             global variables
             global variable_values
             global variable_names
-            
+            # set the variable line_running to the line that is running
             line_running = prog[running_line]
             if line_running[:1] == '#':
                 running_line += 1
@@ -55,14 +54,50 @@ for arg in sys.argv:
                 running_line = line_running
                 running_line = int(float(running_line))
                 if goto_on == 300:
-                  print(running_line)
+                  print("program completed")
                 else:
                   
                   new_line()
+            if line_running[:5] == "ling ":
+                variables += 1
+                value = line_running.replace(line_running[:12], '')
+                
+            
+                line_running = line_running.replace(line_running[:4], '')
+                line_running = line_running.split()
+                var_length = len(line_running)
+            
+                variable_names.insert(variables, line_running[0])
+                
+               
 
+                variable_values.insert(variables, value)
+                running_line += 1
+                if running_line == len(prog):
+                    print("program completed")
+            
+                else:
                     
+                    new_line()
+            line_running = str(line_running)
+            if line_running[:9] == "echo_var ":
+                line_running = line_running.replace(line_running[:9], '')
+                if line_running in variable_names:
+                  line_running = variable_names.index(line_running)
+                  value = variable_values[line_running]
+                  print(value)  
+                  running_line += 1
+                  if running_line == len(prog):
+                      print("program completed")
+                  else:
+                      
+                      new_line()
+                else:
+                  print("Reference error on line " + str(running_line + 1) + " unknown variable name")
         new_line()
                     
+
+
 
 
 
